@@ -1,1158 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brew & Bean | Coffee Shop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
-    <style>
-        
-        /* ================= HERO CAROUSEL ================= */
-
-        .carousel-item {
-            height: 100vh;
-            min-height: 600px;
-            position: relative;
-        }
-        /* Background Image */
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        /* Dark Overlay */
-        .carousel-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-        }
-        /* Carousel Content */
-        .carousel-caption {
-            position: absolute;
-            top: 50%;
-            left: 8%;
-            transform: translateY(-50%);
-            right: auto;
-            bottom: auto;
-            max-width: 700px;
-            text-align: left;
-        }
-        /* Heading */
-        .carousel-caption h1 {
-            font-size: clamp(45px, 6vw, 80px);
-            font-weight: 700;
-            line-height: 1.05;
-            margin: 15px 0 20px;
-        }
-        /* Heading Highlight */
-        .carousel-caption h1 span {
-            color: #c89b6d;
-        }
-        /* Description */
-        .carousel-caption p {
-            font-size: 18px;
-            line-height: 1.7;
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
-        /* Eyebrow */
-        .carousel-caption .eyebrow {
-            font-size: 14px;
-            letter-spacing: 3px;
-            font-weight: 600;
-        }
-        /* Buttons */
-        .carousel-caption .btn {
-            padding: 12px 25px;
-        }
-        /* Indicators */
-        .carousel-indicators {
-            bottom: 30px;
-        }
-        .carousel-indicators button {
-            width: 35px;
-            height: 4px;
-            border: 0;
-            margin: 0 5px;
-        }
-        /* Arrows */
-
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 7%;
-        }
-
-        
-/* ================= IMAGE SCROLLER ================= */
-
-.scroller {
-    width: 100%;
-    overflow: hidden;
-}
-
-
-/* Moving Track */
-
-.scroller-track {
-    display: flex;
-    width: max-content;
-    gap: 20px;
-
-    animation: scrollLeft 25s linear infinite;
-}
-
-
-/* Image Box */
-
-.scroller-item {
-    width: 280px;
-    height: 200px;
-    flex-shrink: 0;
-
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-
-/* Images */
-
-.scroller-item img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: transform 0.4s ease;
-}
-
-
-/* Image Hover */
-
-.scroller-item:hover img {
-    transform: scale(1.08);
-}
-
-
-/* Right → Left Animation */
-
-@keyframes scrollLeft {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(calc(-50% - 10px));
-    }
-
-}
-
-
-/* Pause when mouse is over */
-
-.scroller:hover .scroller-track {
-    animation-play-state: paused;
-}
-
-
-/* Mobile */
-
-@media (max-width: 576px) {
-
-    .scroller-item {
-        width: 220px;
-        height: 160px;
-    }
-
-    .scroller-track {
-        gap: 15px;
-        animation-duration: 20s;
-    }
-
-}
-
-
-/* ================= PRODUCT SCROLLER ================= */
-
-.product-scroller {
-    width: 100%;
-    overflow: hidden;
-}
-
-
-/* Moving Track */
-
-.product-track {
-    display: flex;
-    width: max-content;
-    gap: 25px;
-
-    animation: productScroll 30s linear infinite;
-}
-
-
-/* Product Card */
-
-.product-card {
-    width: 300px;
-    flex-shrink: 0;
-
-    background: #fff;
-
-    border-radius: 15px;
-    overflow: hidden;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-
-    transition: transform 0.3s ease;
-}
-
-
-/* Card Hover */
-
-.product-card:hover {
-    transform: translateY(-8px);
-}
-
-
-/* Product Image */
-
-.product-card img {
-    width: 100%;
-    height: 220px;
-
-    object-fit: cover;
-
-    display: block;
-
-    transition: transform 0.4s ease;
-}
-
-
-/* Image Zoom */
-
-.product-card:hover img {
-    transform: scale(1.05);
-}
-
-
-/* Product Information */
-
-.product-info {
-    padding: 20px;
-}
-
-
-/* Product Name */
-
-.product-info h4 {
-    margin-bottom: 10px;
-
-    font-family: 'Playfair Display', serif;
-
-    font-weight: 700;
-}
-
-
-/* Description */
-
-.product-info p {
-    color: #777;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-
-    min-height: 68px;
-
-    margin-bottom: 15px;
-}
-
-
-/* Price + Button */
-
-.product-bottom {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-}
-
-
-/* Price */
-
-.price {
-    font-size: 20px;
-
-    font-weight: 700;
-
-    color: #8b5e3c;
-}
-
-
-/* Right to Left Animation */
-
-@keyframes productScroll {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(calc(-50% - 12.5px));
-    }
-
-}
-
-
-/* Pause on Hover */
-
-.product-scroller:hover .product-track {
-    animation-play-state: paused;
-}
-
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 576px) {
-
-    .product-card {
-        width: 260px;
-    }
-
-    .product-card img {
-        height: 190px;
-    }
-
-    .product-track {
-        gap: 15px;
-        animation-duration: 25s;
-    }
-
-}
-
-
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">    
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-cup-hot-fill me-2"></i>Brew & Bean</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span
-                    class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-coffee" href="login.html">Login</a></li>
-                    <li class="nav-item ms-lg-2"><a class="nav-link cart-link" href="menu.html"><i
-                                class="bi bi-bag-fill"></i> Cart <span id="cartCount" class="badge">0</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-    <!-- ================= HERO CAROUSEL ================= -->
-
-    <header>
-
-        <div id="coffeeCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
-
-            <!-- Carousel Indicators -->
-            <div class="carousel-indicators">
-
-                <button type="button" data-bs-target="#coffeeCarousel" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1">
-                </button>
-
-                <button type="button" data-bs-target="#coffeeCarousel" data-bs-slide-to="1" aria-label="Slide 2">
-                </button>
-
-                <button type="button" data-bs-target="#coffeeCarousel" data-bs-slide-to="2" aria-label="Slide 3">
-                </button>
-
-            </div>
-
-
-            <!-- Carousel Slides -->
-            <div class="carousel-inner">
-
-
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1920&q=85"
-                        class="d-block w-100" alt="Fresh coffee">
-
-                    <div class="carousel-overlay"></div>
-
-                    <div class="carousel-caption">
-
-                        <span class="eyebrow">
-                            WELCOME TO BREW & BEAN
-                        </span>
-
-                        <h1>
-                            Fresh Coffee,<br>
-                            <span>Warm Moments.</span>
-                        </h1>
-
-                        <p>
-                            Handcrafted coffee, delicious bites and a cozy
-                            place to slow down and enjoy the moment.
-                        </p>
-
-                        <a href="menu.html" class="btn btn-coffee btn-lg me-2">
-                            Explore Menu
-                        </a>
-
-                        <a href="contact.html" class="btn btn-outline-light btn-lg">
-                            Visit Us
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Slide 2 -->
-                <div class="carousel-item">
-
-                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1920&q=85"
-                        class="d-block w-100" alt="Brew and Bean cafe">
-
-                    <div class="carousel-overlay"></div>
-
-                    <div class="carousel-caption">
-
-                        <span class="eyebrow">
-                            YOUR COZY COFFEE SPOT
-                        </span>
-
-                        <h1>
-                            Relax,<br>
-                            <span>Recharge & Enjoy.</span>
-                        </h1>
-
-                        <p>
-                            A warm atmosphere, freshly brewed coffee and
-                            delicious treats made for your perfect break.
-                        </p>
-
-                        <a href="menu.html" class="btn btn-coffee btn-lg me-2">
-                            View Menu
-                        </a>
-
-                        <a href="about.html" class="btn btn-outline-light btn-lg">
-                            About Us
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Slide 3 -->
-                <div class="carousel-item">
-
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1920&q=85"
-                        class="d-block w-100" alt="Latte coffee">
-
-                    <div class="carousel-overlay"></div>
-
-                    <div class="carousel-caption">
-
-                        <span class="eyebrow">
-                            BREWED WITH PASSION
-                        </span>
-
-                        <h1>
-                            Every Cup,<br>
-                            <span>Made With Love.</span>
-                        </h1>
-
-                        <p>
-                            Discover rich flavors, handcrafted drinks and
-                            sweet moments at Brew & Bean.
-                        </p>
-
-                        <a href="menu.html" class="btn btn-coffee btn-lg me-2">
-                            Explore Menu
-                        </a>
-
-                        <a href="contact.html" class="btn btn-outline-light btn-lg">
-                            Find Us
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Previous Button -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#coffeeCarousel" data-bs-slide="prev">
-
-                <span class="carousel-control-prev-icon" aria-hidden="true">
-                </span>
-
-                <span class="visually-hidden">
-                    Previous
-                </span>
-
-            </button>
-
-
-            <!-- Next Button -->
-            <button class="carousel-control-next" type="button" data-bs-target="#coffeeCarousel" data-bs-slide="next">
-
-                <span class="carousel-control-next-icon" aria-hidden="true">
-                </span>
-
-                <span class="visually-hidden">
-                    Next
-                </span>
-
-            </button>
-
-        </div>
-
-    </header>
-
-
-
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-heading text-center">
-                <span class="eyebrow">OUR FAVORITES</span>
-                <h2>Popular Coffee</h2>
-                <p>Made fresh, served with love.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="card coffee-card h-100">
-                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"
-                            class="card-img-top" alt="Cappuccino">
-                        <div class="card-body">
-                            <h5>Cappuccino</h5>
-                            <p>Rich espresso with silky steamed milk and foam.</p>
-                            <div class="d-flex justify-content-between align-items-center"><strong>₹180</strong><button
-                                    class="btn btn-sm btn-coffee add-cart">Add to Cart</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card coffee-card h-100">
-                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=700&q=80"
-                            class="card-img-top" alt="Latte">
-                        <div class="card-body">
-                            <h5>Classic Latte</h5>
-                            <p>Smooth espresso blended with creamy steamed milk.</p>
-                            <div class="d-flex justify-content-between align-items-center"><strong>₹200</strong><button
-                                    class="btn btn-sm btn-coffee add-cart">Add to Cart</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card coffee-card h-100">
-                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80"
-                            class="card-img-top" alt="Americano">
-                        <div class="card-body">
-                            <h5>Americano</h5>
-                            <p>Bold espresso balanced with hot water for a clean finish.</p>
-                            <div class="d-flex justify-content-between align-items-center"><strong>₹150</strong><button
-                                    class="btn btn-sm btn-coffee add-cart">Add to Cart</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card coffee-card h-100">
-                        <img src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=700&q=80"
-                            class="card-img-top" alt="Mocha">
-                        <div class="card-body">
-                            <h5>Chocolate Mocha</h5>
-                            <p>Espresso, chocolate and steamed milk topped with foam.</p>
-                            <div class="d-flex justify-content-between align-items-center"><strong>₹220</strong><button
-                                    class="btn btn-sm btn-coffee add-cart">Add to Cart</button></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features-section section-padding">
-        <div class="container">
-            <div class="section-heading text-center"><span class="eyebrow">WHY BREW & BEAN</span>
-                <h2>Made For Coffee Lovers</h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="feature-box text-center"><i class="bi bi-cup-hot-fill"></i>
-                        <h4>Freshly Brewed</h4>
-                        <p>Every cup is prepared fresh using quality coffee beans.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-box text-center"><i class="bi bi-heart-fill"></i>
-                        <h4>Made With Love</h4>
-                        <p>We care about every detail from the first pour to the last sip.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-box text-center"><i class="bi bi-house-heart-fill"></i>
-                        <h4>Cozy Atmosphere</h4>
-                        <p>A warm and comfortable space to meet, work or relax.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="text-center mb-5">
-                <p class="section-label">Kind words</p>
-                <h2 class="section-title display-6">What Our Customers Say</h2>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="stars mb-2">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
-                        </div>
-                        <p class="text-muted">"Best latte in town, hands down. The staff remembers my order and that
-                            alone keeps me coming back."</p>
-                        <div class="d-flex align-items-center mt-3">
-                            <img src="https://randomuser.me/api/portraits/women/65.jpg" class="testimonial-avatar me-3"
-                                alt="Amara O.">
-                            <div>
-                                <h6 class="mb-0">Amara O.</h6>
-                                <small class="text-muted">Regular customer</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="stars mb-2">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-half"></i>
-                        </div>
-                        <p class="text-muted">"I come here to work every morning. Great wifi, better coffee, and the
-                            pastries are always fresh."</p>
-                        <div class="d-flex align-items-center mt-3">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="testimonial-avatar me-3"
-                                alt="Daniel K.">
-                            <div>
-                                <h6 class="mb-0">Daniel K.</h6>
-                                <small class="text-muted">Freelancer</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="stars mb-2">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
-                        </div>
-                        <p class="text-muted">"Cozy, warm, and the caramel macchiato is a religious experience. My
-                            weekend ritual now."</p>
-                        <div class="d-flex align-items-center mt-3">
-                            <img src="https://randomuser.me/api/portraits/women/22.jpg" class="testimonial-avatar me-3"
-                                alt="Priya S.">
-                            <div>
-                                <h6 class="mb-0">Priya S.</h6>
-                                <small class="text-muted">Local resident</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding">
-        <div class="container">
-            <div class="offer-box p-5 text-center rounded-4">
-                <span class="eyebrow">TODAY'S SPECIAL</span>
-                <h2>Get 20% Off Your First Order</h2>
-                <p>Use code <strong>BREW20</strong> at checkout.</p>
-                <a href="menu.html" class="btn btn-coffee btn-lg">Order Now</a>
-            </div>
-        </div>
-    </section>
     
+<!-- ================= BOOKING SECTION ================= -->
 
+<section class="section-padding">
 
-<!-- ================= IMAGE SCROLLER ================= -->
+    <div class="container text-center">
 
-<section class="image-scroller py-5">
+        <i class="bi bi-calendar-check display-5"></i>
 
-    <div class="container-fluid">
+        <h2 class="mt-3">
+            Reserve Your Table
+        </h2>
 
-        <div class="scroller">
+        <p class="text-muted">
+            Click the button below to book your table.
+        </p>
 
-            <div class="scroller-track">
+        <!-- BOOK TABLE BUTTON -->
+        <button 
+            type="button"
+            class="btn btn-coffee px-5 py-2"
+            data-bs-toggle="modal"
+            data-bs-target="#bookingModal">
 
-                <!-- Images -->
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80"
-                        alt="Coffee">
-                </div>
+            <i class="bi bi-calendar-check"></i>
+            Book a Table
 
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=500&q=80"
-                        alt="Cafe">
-                </div>
-
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500&q=80"
-                        alt="Latte">
-                </div>
-
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=80"
-                        alt="Coffee shop">
-                </div>
-
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80"
-                        alt="Cake">
-                </div>
-
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=500&q=80"
-                        alt="Cafe table">
-                </div>
-
-
-                <!-- Duplicate Images -->
-                <!-- These create the continuous loop -->
-
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80"
-                        alt="Coffee">
-                </div>
-
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=500&q=80"
-                        alt="Cafe">
-                </div>
-
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500&q=80"
-                        alt="Latte">
-                </div>
-
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=80"
-                        alt="Coffee shop">
-                </div>
-
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80"
-                        alt="Cake">
-                </div>
-
-                <div class="scroller-item">
-                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=500&q=80"
-                        alt="Cafe table">
-                </div>
-
-            </div>
-
-        </div>
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- ================= PRODUCT SCROLLER ================= -->
+<!-- ================= BOOKING MODAL ================= -->
 
-<section class="product-section py-5">
+<div 
+    class="modal fade"
+    id="bookingModal"
+    tabindex="-1"
+    aria-labelledby="bookingModalLabel"
+    aria-hidden="true">
 
-    <div class="container">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
 
-        <div class="text-center mb-5">
-            <span class="eyebrow">OUR SPECIALS</span>
-            <h2 class="section-title">Popular Coffee & Treats</h2>
-            <p class="text-muted">
-                Freshly prepared favorites from Brew & Bean.
-            </p>
-        </div>
+        <div class="modal-content">
 
-    </div>
+            <!-- MODAL HEADER -->
+            <div class="modal-header">
 
+                <h5 class="modal-title" id="bookingModalLabel">
 
-    <!-- Scroller -->
+                    <i class="bi bi-calendar-check"></i>
+                    Reserve Your Table
 
-    <div class="product-scroller">
+                </h5>
 
-        <div class="product-track">
-
-
-            <!-- Product 1 -->
-            <div class="product-card">
-
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80"
-                    alt="Cappuccino">
-
-                <div class="product-info">
-
-                    <h4>Cappuccino</h4>
-
-                    <p>
-                        Rich espresso topped with creamy steamed milk
-                        and smooth foam.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹180</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
-                    </div>
-
-                </div>
+                <button 
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
 
             </div>
 
 
-            <!-- Product 2 -->
-            <div class="product-card">
+            <!-- MODAL BODY -->
+            <div class="modal-body">
 
-                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80"
-                    alt="Café Latte">
+                <form id="bookingForm">
 
-                <div class="product-info">
+                    <!-- NAME -->
+                    <div class="mb-3">
 
-                    <h4>Café Latte</h4>
+                        <label class="form-label">
+                            Full Name
+                        </label>
 
-                    <p>
-                        Smooth espresso blended with warm,
-                        silky steamed milk.
-                    </p>
+                        <input 
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            placeholder="Enter your name"
+                            required>
 
-                    <div class="product-bottom">
-                        <span class="price">₹160</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- EMAIL -->
+                    <div class="mb-3">
 
+                        <label class="form-label">
+                            Email
+                        </label>
 
-            <!-- Product 3 -->
-            <div class="product-card">
+                        <input 
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            placeholder="Enter your email"
+                            required>
 
-                <img src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=600&q=80"
-                    alt="Mocha">
-
-                <div class="product-info">
-
-                    <h4>Chocolate Mocha</h4>
-
-                    <p>
-                        A delicious combination of espresso,
-                        chocolate and creamy milk.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹200</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- PHONE -->
+                    <div class="mb-3">
 
+                        <label class="form-label">
+                            Phone Number
+                        </label>
 
-            <!-- Product 4 -->
-            <div class="product-card">
+                        <input 
+                            type="tel"
+                            class="form-control"
+                            id="phone"
+                            placeholder="Enter phone number"
+                            maxlength="10"
+                            required>
 
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"
-                    alt="Chocolate Cake">
-
-                <div class="product-info">
-
-                    <h4>Chocolate Cake</h4>
-
-                    <p>
-                        Soft chocolate cake layered with rich
-                        chocolate cream.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹220</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- DATE -->
+                    <div class="mb-3">
 
+                        <label class="form-label">
+                            Booking Date
+                        </label>
 
-            <!-- Product 5 -->
-            <div class="product-card">
+                        <input 
+                            type="date"
+                            class="form-control"
+                            id="bookingDate"
+                            required>
 
-                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
-                    alt="Croissant">
-
-                <div class="product-info">
-
-                    <h4>Butter Croissant</h4>
-
-                    <p>
-                        Freshly baked golden croissant with
-                        a light and buttery texture.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹140</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- PEOPLE -->
+                    <div class="mb-3">
 
+                        <label class="form-label">
+                            Number of People
+                        </label>
 
-            <!-- Product 6 -->
-            <div class="product-card">
+                        <select 
+                            class="form-select"
+                            id="people"
+                            required>
 
-                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80"
-                    alt="Cold Coffee">
+                            <option value="">
+                                Select number of people
+                            </option>
 
-                <div class="product-info">
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6">6 People</option>
 
-                    <h4>Cold Coffee</h4>
+                        </select>
 
-                    <p>
-                        Chilled creamy coffee blended with
-                        milk and a touch of sweetness.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹190</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- TIME SLOT -->
+                    <div class="mb-3">
 
+                        <label class="form-label">
+                            Select Time Slot
+                        </label>
 
-            <!-- Duplicate Products for Continuous Loop -->
+                        <select 
+                            class="form-select"
+                            id="timeSlot"
+                            required>
 
-            <!-- Product 1 -->
-            <div class="product-card">
+                            <option value="">
+                                Select a time slot
+                            </option>
 
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80"
-                    alt="Cappuccino">
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="12:00 PM">12:00 PM</option>
+                            <option value="01:00 PM">01:00 PM</option>
+                            <option value="02:00 PM">02:00 PM</option>
+                            <option value="05:00 PM">05:00 PM</option>
+                            <option value="06:00 PM">06:00 PM</option>
+                            <option value="07:00 PM">07:00 PM</option>
+                            <option value="08:00 PM">08:00 PM</option>
+                            <option value="09:00 PM">09:00 PM</option>
 
-                <div class="product-info">
+                        </select>
 
-                    <h4>Cappuccino</h4>
-
-                    <p>
-                        Rich espresso topped with creamy steamed milk
-                        and smooth foam.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹180</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- SPECIAL REQUEST -->
+                    <div class="mb-4">
 
+                        <label class="form-label">
+                            Special Request
+                        </label>
 
-            <!-- Product 2 -->
-            <div class="product-card">
+                        <textarea 
+                            class="form-control"
+                            id="message"
+                            rows="3"
+                            placeholder="Birthday, window seat, etc.">
+                        </textarea>
 
-                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80"
-                    alt="Café Latte">
-
-                <div class="product-info">
-
-                    <h4>Café Latte</h4>
-
-                    <p>
-                        Smooth espresso blended with warm,
-                        silky steamed milk.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹160</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- SUBMIT BUTTON -->
+                    <button 
+                        type="submit"
+                        class="btn btn-coffee w-100">
+
+                        <i class="bi bi-calendar-check"></i>
+                        Book My Table
+
+                    </button>
+
+                </form>
 
 
-            <!-- Product 3 -->
-            <div class="product-card">
+                <!-- SUCCESS MESSAGE -->
+                <div 
+                    id="successMessage"
+                    class="alert alert-success mt-4 d-none">
 
-                <img src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=600&q=80"
-                    alt="Mocha">
+                    <i class="bi bi-check-circle-fill"></i>
 
-                <div class="product-info">
+                    <strong>
+                        Booking Successful!
+                    </strong>
 
-                    <h4>Chocolate Mocha</h4>
-
-                    <p>
-                        A delicious combination of espresso,
-                        chocolate and creamy milk.
+                    <p class="mb-0">
+                        Your table has been reserved successfully.
                     </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹200</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Product 4 -->
-            <div class="product-card">
-
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"
-                    alt="Chocolate Cake">
-
-                <div class="product-info">
-
-                    <h4>Chocolate Cake</h4>
-
-                    <p>
-                        Soft chocolate cake layered with rich
-                        chocolate cream.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹220</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Product 5 -->
-            <div class="product-card">
-
-                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
-                    alt="Croissant">
-
-                <div class="product-info">
-
-                    <h4>Butter Croissant</h4>
-
-                    <p>
-                        Freshly baked golden croissant with
-                        a light and buttery texture.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹140</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Product 6 -->
-            <div class="product-card">
-
-                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80"
-                    alt="Cold Coffee">
-
-                <div class="product-info">
-
-                    <h4>Cold Coffee</h4>
-
-                    <p>
-                        Chilled creamy coffee blended with
-                        milk and a touch of sweetness.
-                    </p>
-
-                    <div class="product-bottom">
-                        <span class="price">₹190</span>
-
-                        <a href="menu.html"
-                           class="btn btn-coffee btn-sm">
-                            Order
-                        </a>
-                    </div>
 
                 </div>
 
@@ -1162,40 +259,23 @@
 
     </div>
 
-</section>
+</div>
 
 
+</div>
+<script>
+const bookingForm = document.getElementById("bookingForm");
+const successMessage = document.getElementById("successMessage");
 
+bookingForm.addEventListener("submit", function (event) {
 
-    <footer class="footer">
-        <div class="container py-5">
-            <div class="row g-4">
-                <div class="col-lg-5">
-                    <h4><i class="bi bi-cup-hot-fill me-2"></i>Brew & Bean</h4>
-                    <p>Good coffee. Good food. Good moments.</p>
-                </div>
-                <div class="col-6 col-lg-2">
-                    <h6>Quick Links</h6><a href="index.html">Home</a><a href="menu.html">Menu</a><a
-                        href="about.html">About</a>
-                </div>
-                <div class="col-6 col-lg-2">
-                    <h6>Support</h6><a href="contact.html">Contact</a><a href="login.html">Login</a><a
-                        href="register.html">Register</a>
-                </div>
-                <div class="col-lg-3">
-                    <h6>Follow Us</h6>
-                    <div class="socials"><a href="#"><i class="bi bi-instagram"></i></a><a href="#"><i
-                                class="bi bi-facebook"></i></a><a href="#"><i class="bi bi-twitter-x"></i></a></div>
-                </div>
-            </div>
-            <hr>
-            <p class="text-center mb-0 small">© 2026 Brew & Bean. All Rights Reserved.</p>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    event.preventDefault();
 
+    successMessage.classList.remove("d-none");
 
+    bookingForm.reset();
+
+});
+</script>
 </body>
-
 </html>
